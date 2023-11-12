@@ -1,0 +1,36 @@
+{
+  "name": "upload",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "repository": "https://github.com/stephanrossi/electron-upload.git",
+  "author": "DIN-Previsa <din@previsa.com.br>",
+  "license": "MIT",
+  "build": {
+    "appId": "PrevisaUploader",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "src/images/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "scripts": {
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "start": "electron ."
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chokidar": "^3.5.1",
+    "form-data": "^4.0.0"
+  },
+  "devDependencies": {
+    "electron": "^27.0.4",
+    "electron-builder": "^24.6.4"
+  }
+}
