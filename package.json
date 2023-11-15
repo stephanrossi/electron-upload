@@ -1,5 +1,5 @@
 {
-  "name": "upload",
+  "name": "previsa-uploader",
   "version": "1.0.0",
   "main": "src/main.js",
   "repository": "https://github.com/stephanrossi/electron-upload.git",

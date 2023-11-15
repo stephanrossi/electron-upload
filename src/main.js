@@ -54,6 +54,16 @@ function createWindow() {
     });
 }
 
+function moveFile(sourcePath, destinationFolder) {
+    const fileName = path.basename(sourcePath);
+    const destinationPath = path.join(destinationFolder, fileName);
+    fs.rename(sourcePath, destinationPath, err => {
+        if (err) {
+            alert(`Erro ao mover arquivo: ${err}`);
+        }
+    });
+}
+
 function sendFileToServer(filePath) {
     const formData = new FormData();
     formData.append('file', fs.createReadStream(filePath));
@@ -63,9 +73,11 @@ function sendFileToServer(filePath) {
             'Content-Type': 'multipart/form-data'
         }
     }).then(response => {
-        console.log('Arquivo enviado com sucesso:', response.data);
+        alert('Arquivo enviado com sucesso:', response.data);
+        moveFile(filePath, path.join(app.getPath('desktop'), 'Uploads', 'concluídos'));
     }).catch(error => {
-        console.error('Erro ao enviar arquivo:', error);
+        alert('Erro ao enviar arquivo:', error);
+        moveFile(filePath, path.join(app.getPath('desktop'), 'Uploads', 'erros'));
     });
 }
 
